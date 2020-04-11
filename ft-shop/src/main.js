@@ -16,6 +16,9 @@ if ('addEventListener' in document) {
 import './style/common.less'
 
 
+//=======================引入Vant配置
+import './plugins/Vant.js'
+
 Vue.config.productionTip = false
 
 new Vue({

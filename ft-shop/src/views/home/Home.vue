@@ -1,19 +1,28 @@
 <template>
   <div class="home" id="home">
-    <h2>首页</h2>
+    <Header></Header>
   </div>
 </template>
 
 <script>
+  import Header from './header/Header.vue'
+  import {getHomeData} from '../../api/index.js'
   export default {
     name:"Home",
-    components:{},
+    components:{Header},
     props:{},
     data(){
       return{
         
       }
     },
+    created() {
+      getHomeData().then((res)=>{
+        console.log(res)
+      }).catch((err)=>{
+        console.log(err)
+      })
+    }
   }
 </script>
 
