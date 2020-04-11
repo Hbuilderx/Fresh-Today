@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
+import router from './router/index.js'
 
 //======================配置fastclick=========================
 import FastClick from 'fastclick'
@@ -12,12 +13,13 @@ if ('addEventListener' in document) {
 
 //======================引入全局样式====================
   //@表示别名，在src目录下
-import '@/style/common.less'
+import './style/common.less'
 
 
 Vue.config.productionTip = false
 
 new Vue({
+  router,
   store,
   render: h => h(App)
-}).$mount('#app')
+}).$mount('#app');
