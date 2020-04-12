@@ -15,8 +15,11 @@ if ('addEventListener' in document) {
   //@表示别名，在src目录下
 import './style/common.less'
 
+//=====================配置rem=========================
+import './config/rem.js'
 
-//=======================引入Vant配置
+
+//=======================引入Vant配置====================
 import './plugins/Vant.js'
 
 Vue.config.productionTip = false

@@ -70,9 +70,9 @@
   }
 
   .locationWrapper .address {
-      padding-left: 1.875rem;
+      padding-left: 1.5rem;
       display: inline-block;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;

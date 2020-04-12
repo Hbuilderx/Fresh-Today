@@ -54,6 +54,6 @@
   #dashboard {
     width: 100%;
     height: 100%;
-    background-color: #FFCD43;
+    background-color: #f5f5f5;
   }
 </style>
