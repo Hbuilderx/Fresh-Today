@@ -1,7 +1,6 @@
 <template>
   <div class="home" id="home">
-    <div v-if="!showLoading">
-      
+    <div v-if="!showLoading">     
       <Header></Header>
       <Sowing :images="images"></Sowing>
       <Nav :nav="nav"> </Nav>
@@ -40,20 +39,6 @@
     },
     created() {
       this.reqHomeData()
-      /* getHomeData().then((res)=>{
-        console.log(res.data.list)
-        this.images=res.data.list[0].icon_list //轮播图
-        this.nav=res.data.list[2].icon_list//导航
-        this.buying=res.data.list[3].product_list//秒杀
-        this.recommend=res.data.list[4].product_list//猜你喜欢
-        showBack((status)=>{
-            // console.log(status);
-            this.showBackStatus = status;
-        });
-        this.showLoading=!this.showLoading
-      }).catch((err)=>{
-        console.log(err)
-      }) */
     },
     methods:{
       async reqHomeData(){
@@ -63,7 +48,7 @@
           this.images=res.data.list[0].icon_list //轮播图
           this.nav=res.data.list[2].icon_list//导航
           this.buying=res.data.list[3].product_list//秒杀
-          this.recommend=res.data.list[4].product_list//猜你喜欢
+          this.recommend=res.data.list[8].product_list//猜你喜欢
           showBack((status)=>{
               // console.log(status);
               this.showBackStatus = status;
@@ -77,14 +62,17 @@
         let docB = document.documentElement || document.body;
         animate(docB, {scrollTop: '0'}, 800, 'ease-out');
       },
+      
+      
     }
   }
 </script>
 
 <style scoped="scoped" lang="less">
   #home {
+    padding-bottom: 50px;
     width: 100%;
-    min-height: 300rem;
+    height: auto;
    // background-color: #DD001B;
    //overflow: hidden;
     .loading {

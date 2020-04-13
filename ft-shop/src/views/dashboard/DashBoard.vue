@@ -1,12 +1,15 @@
 <template>
   <div class="dashboard" id="dashboard" >  
-    <van-tabbar v-model="active" active-color="#75A342" fixed>     
+    <van-tabbar v-model="active" active-color="#75A342" >     
       <van-tabbar-item v-for="(item,index) in tabbars" :key="index" :to="(item.name)">
         <span>{{item.title}}</span>
         <img slot="icon" slot-scope="props" :src="props.active ? item.active : item.inactive" />
       </van-tabbar-item>     
     </van-tabbar>  
-    <router-view></router-view>
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive"></router-view>
+    </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive"></router-view>
   </div>
 </template>
 
