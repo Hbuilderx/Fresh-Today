@@ -19,7 +19,7 @@
 
     display: flex;
     justify-content: flex-start;
-    align-items: baseline;
+    align-items: flex-start;
     span{
       margin-left: 10px;
       &.name {

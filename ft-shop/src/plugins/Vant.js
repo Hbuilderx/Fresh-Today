@@ -14,3 +14,7 @@ Vue.use(Lazyload);
 //=====Loading
 import { Loading } from 'vant';
 Vue.use(Loading);
+
+//=====图标
+import { Icon } from 'vant';
+Vue.use(Icon);

@@ -22,6 +22,11 @@ import './config/rem.js'
 //=======================引入Vant配置====================
 import './plugins/Vant.js'
 
+
+//======================引入全局过滤器=========
+// 5. 引入全局过滤器
+import './config/filter.js'
+
 Vue.config.productionTip = false
 
 new Vue({
