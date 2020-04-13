@@ -18,3 +18,12 @@ Vue.use(Loading);
 //=====图标
 import { Icon } from 'vant';
 Vue.use(Icon);
+
+//========分割线
+import { Divider } from 'vant';
+
+Vue.use(Divider);
+
+//========Toast
+import { Toast } from 'vant';
+Vue.use(Toast);

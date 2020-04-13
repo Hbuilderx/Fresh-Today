@@ -13,6 +13,7 @@
 </template>
 
 <script>
+  import {mapMutations} from 'vuex'
   import Header from './header/Header.vue'
   import Sowing from './sowing/Sowing.vue'
   import Nav from './nav/Nav.vue'
@@ -22,6 +23,9 @@
   import {getHomeData} from '../../api/index.js'
   // 3. 引入处理返回顶部的函数
   import {showBack, animate} from "@/config/global";
+  //4.引入通知插件
+  import PubSub from 'pubsub-js'
+  import {Toast} from "vant"
   export default {
     name:"Home",
     components:{Header,Sowing,Nav,PanicBuying,Recommend,MarkPage},
@@ -40,7 +44,29 @@
     created() {
       this.reqHomeData()
     },
+    mounted() {
+      //订阅添加到购物车的消息
+      PubSub.subscribe("homeAddToCart",(msg,goods)=>{
+        if(msg==="homeAddToCart"){
+          this.ADD_GOODS({
+            goodsId:goods.id,
+            goodsName:goods.name,
+            smallImage:goods.small_image,
+            goodsPrice:goods.price
+          });
+          Toast.success({
+            message:"已加入购物车",
+            duration:1500
+          });
+        };       
+      });
+      
+    },
     methods:{
+      //拿到mutations里面的方法
+      ...mapMutations(["ADD_GOODS"]),
+      
+      //请求首页数据
       async reqHomeData(){
       let res= await getHomeData()
         if(res){

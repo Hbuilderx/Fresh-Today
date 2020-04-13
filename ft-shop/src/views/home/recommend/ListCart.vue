@@ -15,18 +15,30 @@
       “{{item.spec}}
     </p>
      <p class="total-sales">月销{{item.total_sales}}笔</p>
-     <p class="cart">
+     <p class="cart" @click="addToCart(item)">
        <van-icon name="shopping-cart-o" color="#ffffff"/>
      </p>
   </div>
 </template>
 
 <script>
+  import PubSub from 'pubsub-js'
   export default {
     name:"ListCart",
     props:{
       item:{
         type:Object
+      }
+    },
+    data(){
+      return{
+        
+      }
+    },
+    methods:{
+      //发布添加到购车的消息
+      addToCart(goods){
+        PubSub.publish("homeAddToCart",goods)
       }
     }
   }

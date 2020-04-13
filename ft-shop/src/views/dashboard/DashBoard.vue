@@ -20,7 +20,7 @@
     props:{},
     data() {
       return {
-        active: 0,
+        active: Number(sessionStorage.getItem("tabBarActiveIndex"))||0, //初始时取值，转为整数
         tabbars:[
           {
             name:"/dashboard/home",
@@ -49,7 +49,15 @@
         ],
          
       }
-    }
+    },
+    watch:{
+      active(value){
+        console.log(value)
+        let tabBarActiveIndex=value>0?value:0
+        //存入当前激活的tabbar下标至session
+        sessionStorage.setItem("tabBarActiveIndex",value)
+      }
+    },
   }
 </script>
 

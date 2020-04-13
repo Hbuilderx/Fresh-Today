@@ -1,9 +1,8 @@
 <template>
   <div class="recommend">
-    <div class="title">
-      <div class="line"></div>
-      <div class="con">猜你喜欢</div>
-    </div>
+    <van-divider :style="{ color: '#75A342', borderColor: '#75A342', padding: '0 16px' }">
+      今日推荐
+    </van-divider>
     
     <div class="list">
       <ListCart v-for="(item,index) in recommend " :key="index" :item="item">

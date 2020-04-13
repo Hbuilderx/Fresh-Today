@@ -1,0 +1,1 @@
+export const ADD_GOODS="ADD_GOODS" //添加到购物车

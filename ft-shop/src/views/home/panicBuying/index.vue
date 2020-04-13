@@ -10,7 +10,7 @@
           <span class="origin-price">{{item.origin_price}}</span>
         </p>
          <!-- <p class="total-sales">月销{{item.total_sales}}笔</p> -->
-         <p class="cart">
+         <p class="cart" @click="addToCart(item)">
            <van-icon name="shopping-cart-o" color="#ffffff"/>
          </p>
       </div>
@@ -20,6 +20,7 @@
 
 <script>
   import Title from './title.vue'
+  import PubSub from 'pubsub-js'
   export default {
     name:"PanicBuying",
     components:{Title},
@@ -33,6 +34,12 @@
         
       }
     },
+    
+    methods:{
+      addToCart(goods){
+        PubSub.publish("homeAddToCart",goods)
+      }
+    }
   }
 </script>
 
