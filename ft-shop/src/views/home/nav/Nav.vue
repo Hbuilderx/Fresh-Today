@@ -1,6 +1,6 @@
 <template>
   <div class="nav">
-    <div class="nav-item" v-for="(item,index) in nav" :key="index">
+    <div class="nav-item" v-for="(item,index) in nav" :key="index" @click="handleClick">
       <img :src="item.icon_url" alt="">
       <span>{{item.name}}</span>
     </div>
@@ -8,6 +8,7 @@
 </template>
 
 <script>
+   import {Toast} from "vant"
   export default {
     name:"Nav",
     props:{
@@ -16,6 +17,15 @@
         
       }
     },
+    
+    methods:{
+      handleClick(){
+        Toast({
+          message: '哎呀，服务器暂时挂了',
+          icon: 'like-o'
+        });
+      }
+    }
   }
 </script>
 

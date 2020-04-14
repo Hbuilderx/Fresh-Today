@@ -32,6 +32,9 @@
   import Header from './components/Header.vue'
   import Content from './components/Content.vue'
   import BScroll from 'better-scroll'
+  import PubSub from "pubsub-js"
+  import {mapMutations} from 'vuex'
+  import {Toast} from "vant"
   import {
     getCategories,
     getCategoriesDetail
@@ -57,8 +60,29 @@
     },
     created() {
       this.initData()
+    },  
+    mounted() {
+      //订阅添加到购物车的消息
+      PubSub.subscribe("categoryAddToCart",(msg,goods)=>{
+        if(msg==="categoryAddToCart"){
+          this.ADD_GOODS({
+            goodsId:goods.id,
+            goodsName:goods.name,
+            smallImage:goods.small_image,
+            goodsPrice:goods.price
+          });
+          Toast.success({
+            message:"已加入购物车",
+            duration:1500
+          });
+        };       
+      });
     },
     methods: {
+      
+      //拿到mutations里面的方法
+      ...mapMutations(["ADD_GOODS"]),
+      
       // 1. 初始化操作(数据和界面)
       async initData() {
         // 1. 获取左边的数据
@@ -108,7 +132,9 @@
         if (rightRes.success) {
           this.categoriesDetailData = rightRes.data.cate;
         }
-      }
+      },
+      
+      
     }
   }
 </script>

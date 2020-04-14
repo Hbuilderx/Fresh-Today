@@ -27,3 +27,7 @@ Vue.use(Divider);
 //========Toast
 import { Toast } from 'vant';
 Vue.use(Toast);
+
+//========Dialog
+import { Dialog } from 'vant';
+Vue.use(Dialog);

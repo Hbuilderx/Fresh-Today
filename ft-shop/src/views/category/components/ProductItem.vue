@@ -46,10 +46,16 @@
 </template>
 
 <script>
+  import PubSub from 'pubsub-js'
   export default {
     name: "ProductItem",
     props: {
       products: Array
+    },
+    methods:{
+      addToCart(goods){
+        PubSub.publish("categoryAddToCart",goods)
+      }
     }
   }
 </script>

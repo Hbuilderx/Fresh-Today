@@ -205,3 +205,48 @@ export const animate = (element, target, duration = 400, mode = 'ease-out', call
         })
     }, 20);
 };
+
+
+/* 
+ 本地数据存储
+ 
+ 
+ */
+
+export const saveStore=(name,content)=> {
+  if(!name){
+    return
+  }
+  if(typeof content!=="string"){
+    content=JSON.stringify(content)
+  }
+  window.localStorage.setItem(name,content)
+  
+}
+
+/* 
+ 本地数据获取
+ 
+ */
+export  const getStore=(name)=> {
+  if(!name){
+    return
+  }else{
+    return window.localStorage.getItem(name)
+  }
+}
+
+
+/* 
+ 
+ 本地数据删除
+ 
+ */
+
+export  const removeStore=(name)=> {
+  if(!name){
+    return
+  }else{
+    window.localStorage.removeItem(name)
+  }
+}
