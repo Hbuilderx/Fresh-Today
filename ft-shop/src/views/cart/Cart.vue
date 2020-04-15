@@ -44,7 +44,8 @@
                   </div>
               </div>
               <div class="tabBarRight">
-                  <a href="#" class="pay">去结算({{selectedGoodsCount}})</a>
+                <a href="#" class="pay" @click.stop="beforeToPay">去结算({{selectedGoodsCount}})</a>
+
               </div>
           </div>
       </div>
@@ -53,7 +54,7 @@
 
 <script >
   import{mapState,mapMutations} from 'vuex'
-  import {Dialog} from 'vant'
+  import {Dialog,Toast} from 'vant'
   export default {
     name:"Cart",
     components:{},
@@ -152,6 +153,18 @@
           // on cancel
         });
       },
+      
+      //6.去支付
+      beforeToPay(){
+        if(this.totalPrice>0){
+          this.$router.push("/confirmOrder")
+        }else{
+          Toast({
+              message: '请先选择商品后再结算~',
+              duration: 1000
+          })
+        }
+      }, 
     }
   }
 </script>

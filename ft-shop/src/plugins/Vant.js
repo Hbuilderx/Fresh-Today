@@ -31,3 +31,12 @@ Vue.use(Toast);
 //========Dialog
 import { Dialog } from 'vant';
 Vue.use(Dialog);
+
+//=======导航栏
+import { NavBar } from 'vant';
+Vue.use(NavBar);
+
+//=========联系人
+import { ContactCard, ContactList, ContactEdit } from 'vant';
+
+Vue.use(ContactCard).use(ContactList).use(ContactEdit);

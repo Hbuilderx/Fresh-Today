@@ -1,14 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-// 引入一级组件
+// 引入dashboard一级组件
 import DashBoard from './../views/dashboard/DashBoard'
 
-//二级组件
+//引入dashboard二级组件
 const Home =()=>import('../views/home/Home.vue')
 const Cart=()=>import('../views/cart/Cart.vue')
 const Category=()=>import('../views/category/Category.vue')
 const Mine=()=>import("../views/mine/Mine.vue")
+
+//引入订单一级组件
+import Order from '../views/order/Order.vue'
+const MyAddress=()=>import("../views/order/children/MyAddress.vue")
 
 
 Vue.use(Router);
@@ -28,6 +32,17 @@ export default new Router({
               {path: 'mine', name:'mine', component: Mine},
               
           ]
+        },
+        
+        {
+          path:'/confirmOrder',
+          name:'confirmOrder',
+          component:Order,
+          children:[
+           
+            {path:"myAddress",name:"myAddress",component:MyAddress}
+          ]
+          
         },
     ]
 });
