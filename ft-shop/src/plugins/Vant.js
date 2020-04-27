@@ -39,4 +39,21 @@ Vue.use(NavBar);
 //=========联系人
 import { ContactCard, ContactList, ContactEdit } from 'vant';
 
-Vue.use(ContactCard).use(ContactList).use(ContactEdit);
+Vue.use(ContactCard).use(ContactList).use(ContactEdit); /* 链式调用*/
+
+//========地质编辑
+import { AddressEdit } from 'vant';
+Vue.use(AddressEdit);
+
+//=======单元格
+import { Cell, CellGroup } from 'vant';
+Vue.use(Cell).use(CellGroup);
+
+
+//=======图片
+import { Image as VanImage } from 'vant';
+Vue.use(VanImage);
+
+//=======提交订单
+import { SubmitBar } from 'vant';
+Vue.use(SubmitBar);

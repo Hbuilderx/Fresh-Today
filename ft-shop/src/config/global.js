@@ -209,8 +209,6 @@ export const animate = (element, target, duration = 400, mode = 'ease-out', call
 
 /* 
  本地数据存储
- 
- 
  */
 
 export const saveStore=(name,content)=> {
@@ -226,7 +224,6 @@ export const saveStore=(name,content)=> {
 
 /* 
  本地数据获取
- 
  */
 export  const getStore=(name)=> {
   if(!name){
@@ -236,11 +233,8 @@ export  const getStore=(name)=> {
   }
 }
 
-
 /* 
- 
  本地数据删除
- 
  */
 
 export  const removeStore=(name)=> {

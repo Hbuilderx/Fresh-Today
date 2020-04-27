@@ -12,8 +12,13 @@ const Mine=()=>import("../views/mine/Mine.vue")
 
 //引入订单一级组件
 import Order from '../views/order/Order.vue'
+
+//引入订单二级组件
 const MyAddress=()=>import("../views/order/children/MyAddress.vue")
 
+//引入订单三级组件
+const AddAddress=()=>import("../views/order/children/children/AddAddress.vue")
+const EditAddress=()=>import("../views/order/children/children/EditAddress.vue")
 
 Vue.use(Router);
 
@@ -36,11 +41,18 @@ export default new Router({
         
         {
           path:'/confirmOrder',
-          name:'confirmOrder',
+          name:'order',
           component:Order,
-          children:[
-           
-            {path:"myAddress",name:"myAddress",component:MyAddress}
+          children:[           
+            {path:"myAddress",
+            name:"myAddress",
+            component:MyAddress,
+            children:[
+              {path:"addAddress",name:"addAddress",component:AddAddress},
+              {path:"editAddress",name:"editAddress",component:EditAddress},
+            ]
+            },
+            
           ]
           
         },
