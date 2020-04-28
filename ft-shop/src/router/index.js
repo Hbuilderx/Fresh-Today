@@ -20,6 +20,9 @@ const MyAddress=()=>import("../views/order/children/MyAddress.vue")
 const AddAddress=()=>import("../views/order/children/children/AddAddress.vue")
 const EditAddress=()=>import("../views/order/children/children/EditAddress.vue")
 
+//用户登录
+const Login=()=>import("../views/login/Login.vue")
+
 Vue.use(Router);
 
 export default new Router({
@@ -44,17 +47,24 @@ export default new Router({
           name:'order',
           component:Order,
           children:[           
-            {path:"myAddress",
-            name:"myAddress",
-            component:MyAddress,
-            children:[
-              {path:"addAddress",name:"addAddress",component:AddAddress},
-              {path:"editAddress",name:"editAddress",component:EditAddress},
-            ]
+            {
+              path:"myAddress",
+              name:"myAddress",
+              component:MyAddress,
+              children:[
+                {path:"addAddress",name:"addAddress",component:AddAddress},
+                {path:"editAddress",name:"editAddress",component:EditAddress},
+              ]
             },
             
           ]
           
         },
+        
+        {
+          path:"/login",
+          name:"login",
+          component:Login
+        }
     ]
 });

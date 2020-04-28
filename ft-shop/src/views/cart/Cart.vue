@@ -1,5 +1,5 @@
 <template>
-  <div id="cart">
+  <div id="cart" v-if="userInfo.token">
       <!--头部区域-->
       <header class="titleWrapper">
           <h4><strong>购物车</strong></h4>
@@ -50,14 +50,16 @@
           </div>
       </div>
   </div>
+  <SelectLogin v-else></SelectLogin>
 </template>
 
 <script >
   import{mapState,mapMutations} from 'vuex'
   import {Dialog,Toast} from 'vant'
+  import SelectLogin from '../login/SelectLogin.vue'
   export default {
     name:"Cart",
-    components:{},
+    components:{SelectLogin},
     props:{},
     data(){
       return{
@@ -66,12 +68,15 @@
     },
     
     mounted() {
-      console.log(this.shopCart)
+     // console.log(this.shopCart)
     },
     computed:{
      // 拿到数据
      shopCart(){
        return this.$store.getters.shopCart
+     },
+     userInfo(){
+       return this.$store.getters.userInfo
      },
      //商品全选判断
      isSelectedAll(){

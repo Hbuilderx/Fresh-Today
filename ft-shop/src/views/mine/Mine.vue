@@ -1,5 +1,5 @@
 <template>
-  <div class="mine" id="mine">
+  <div class="mine" id="mine" v-if="userInfo.token">
     <header>
       <span>个人中心</span>
     </header>
@@ -47,12 +47,16 @@
     </van-cell-group> 
     
   </div>
+  
+  <SelectLogin v-else></SelectLogin>
 </template>
 
 <script>
+  import {mapState,mapMutations} from 'vuex'
+  import SelectLogin from '../login/SelectLogin.vue'
   export default {
     name:"Mine",
-    components:{},
+    components:{SelectLogin},
     props:{},
     data(){
       return{
@@ -67,6 +71,10 @@
     },
     methods:{
       
+    },
+    
+    computed:{
+      ...mapState(["userInfo"])
     }
   }
 </script>
@@ -87,7 +95,7 @@
     justify-content: center;
     align-items: center;
     font-size: 1rem;
-
+    margin: 0;
   }
   
   .profile {
@@ -127,6 +135,6 @@
   }
   
   .van-grid-item__icon::before {
-    color: #6C6C6C !important;
+    color: #323233 !important;
   }
 </style>
